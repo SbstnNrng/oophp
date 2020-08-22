@@ -67,6 +67,11 @@ return [
             "text" => "Dice 100",
             "url" => "dice100",
             "title" => "Dice 100",
+        ],
+        [
+            "text" => "Dice 100 (Kontroller)",
+            "url" => "dicegame/init",
+            "title" => "Dice 100",
         ]
     ],
 ];

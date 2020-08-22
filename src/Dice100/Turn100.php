@@ -9,8 +9,10 @@ class Turn100
 {
     /**
      * @var int $turnValue      Total value of turn.
+     * @var array $serie        Serie
      */
     private $turnValue;
+    private $serie;
 
     /**
      * Constructor to initiate the object with current game settings,
@@ -21,6 +23,7 @@ class Turn100
     public function __construct()
     {
         $this->turnValue = 0;
+        $this->serie = [];
     }
 
     /**
@@ -33,6 +36,8 @@ class Turn100
         $hand = new Hand100();
 
         $hand->throwHand();
+        //$this->serie += $hand->getSerie();
+        $this->serie = array_merge($this->serie, $hand->getSerie());
         if ($hand->getHandValue() == 0) {
             $this->turnValue = 0;
         } else {
@@ -58,5 +63,15 @@ class Turn100
     public function resetTurn()
     {
         $this->turnValue = 0;
+    }
+
+    /**
+     * Return the serie.
+     *
+     * @return array
+     */
+    public function getSerie()
+    {
+        return $this->serie;
     }
 }

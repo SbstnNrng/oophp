@@ -10,9 +10,11 @@ class Hand100
     /**
      * @var int $handValue      Value of hand.
      * @var int $numberOfDice   Number of dice.
+     * @var array $serie        Dice serie
      */
     private $handValue;
     private $numberOfDice;
+    private $serie;
 
     /**
      * Constructor to initiate the object with current game settings,
@@ -36,13 +38,26 @@ class Hand100
     {
         $dice = new Dice100();
 
+        // for ($i=0; $i < $this->numberOfDice; $i++) {
+        //     $dice->throwDice();
+        //     if ($dice->getDiceValue() == 1) {
+        //         $this->handValue = 0;
+        //         break;
+        //     } else {
+        //         $this->handValue += $dice->getDiceValue();
+        //     }
+        // }
         for ($i=0; $i < $this->numberOfDice; $i++) {
             $dice->throwDice();
-            if ($dice->getDiceValue() == 1) {
+            $this->serie[] = $dice->getDiceValue();
+        }
+        
+        for ($i=0; $i < $this->numberOfDice; $i++) {
+            if ($this->serie[$i] == 1) {
                 $this->handValue = 0;
                 break;
             } else {
-                $this->handValue += $dice->getDiceValue();
+                $this->handValue += $this->serie[$i];
             }
         }
     }
@@ -55,5 +70,15 @@ class Hand100
     public function getHandValue()
     {
         return $this->handValue;
+    }
+
+    /**
+     * Return the serie.
+     *
+     * @return array
+     */
+    public function getSerie()
+    {
+        return $this->serie;
     }
 }

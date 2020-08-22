@@ -88,4 +88,42 @@ class Dice100Test extends TestCase
         $res = $game->checkScore();
         $this->assertEquals($exp, $res);
     }
+
+    /**
+     * Just assert something is true.
+     */
+    public function testHistogramTrait2()
+    {
+        $histogram = new Game100();
+        $this->assertInstanceOf("\Seb\Dice100\Game100", $histogram);
+
+        $exp = 1;
+        $res = $histogram->getHistogramMin();
+        $this->assertEquals($exp, $res);
+
+        $exp = 6;
+        $res = $histogram->getHistogramMax();
+        $this->assertEquals($exp, $res);
+
+        $arr = $histogram->getHistogramSerie();
+        $this->assertIsArray($arr);
+    }
+
+    /**
+     * Just assert something is true.
+     */
+    public function testHistogram()
+    {
+        $histogram = new Histogram();
+        $game = new Game100();
+        $this->assertInstanceOf("\Seb\Dice100\Histogram", $histogram);
+
+        $arr = $histogram->getSerie();
+        $this->assertIsArray($arr);
+
+        $histogram->injectData($game);
+        
+        $str = $histogram->getAsText();
+        $this->assertIsString($str);
+    }
 }

@@ -5,13 +5,15 @@ namespace Seb\Dice100;
 /**
  * Game, a class supporting the game through GET, POST and SESSION.
  */
-class Game100
+class Game100 implements HistogramInterface
 {
+    use HistogramTrait2;
+
     /**
      * @var int $playerScore        Player score.
      * @var int $computerScore      Computer score.
      * @var int $turnScore          Turn score.
-     * @var int $compTurnScore          Turn score.
+     * @var int $compTurnScore      Turn score.
      */
     private $playerScore;
     private $computerScore;
@@ -45,6 +47,8 @@ class Game100
         $turn = new Turn100();
 
         $turn->throwHand();
+        //$this->serie += $turn->getSerie();
+        $this->serie = array_merge($this->serie, $turn->getSerie());
         if ($turn->getTurnValue() == 0) {
             $this->turnScore = 0;
             $this->computerPlay();
@@ -80,11 +84,21 @@ class Game100
             if ($compTurn->getTurnValue() == 0) {
                 $this->compTurnScore = 0;
                 break;
+            } elseif ($compTurn->getTurnValue() > 14) {
+                $this->compTurnScore += $compTurn->getTurnValue();
+                break;
+            } elseif (($this->computerScore + $compTurn->getTurnValue()) > 99) {
+                $this->compTurnScore += $compTurn->getTurnValue();
+                break;
+            } elseif ($this->computerScore > $this->playerScore) {
+                $this->compTurnScore += $compTurn->getTurnValue();
+                break;
             } else {
                 $this->compTurnScore += $compTurn->getTurnValue();
                 $compTurn->resetTurn();
             }
         }
+        $this->serie = array_merge($this->serie, $compTurn->getSerie());
         $this->computerScore += $this->compTurnScore;
         $this->compTurnScore = 0;
     }

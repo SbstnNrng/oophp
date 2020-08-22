@@ -29,11 +29,12 @@ class Dice100
     /**
      * Randomize the dice value between 1 and 6.
      *
-     * @return void
+     * @return integer random value between 1 and 6
      */
     public function throwDice()
     {
         $this->throwValue = rand(1, 6);
+        return $this->throwValue;
     }
 
     /**
