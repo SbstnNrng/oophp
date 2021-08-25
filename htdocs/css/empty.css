@@ -3,3 +3,8 @@
  *
  * To use for showing how the website looks when there is no style at all.
  */
+
+ img.thumb {
+    max-width: 100px;
+    max-height: 100px;
+}

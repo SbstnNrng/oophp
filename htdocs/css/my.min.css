@@ -17,7 +17,7 @@
 
  body,
 html {
-    background-color: blue;
+    background-color: lightgray;
 }
 
 .wrap-sidebar .block h4 {
@@ -28,4 +28,19 @@ html {
 img.thumb {
     max-width: 100px;
     max-height: 100px;
+}
+
+table {
+    background-color: black;
+}
+
+table tr {
+    background-color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+table tr td {
+    min-width: 5rem;
+    padding: 0.2rem;
 }

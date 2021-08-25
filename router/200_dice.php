@@ -1,10 +1,4 @@
 <?php
-/**
- * Create routes using $app programming style.
- */
-//var_dump(array_keys(get_defined_vars()));
-
-
 
 /**
  * Init game and redirect to dice100

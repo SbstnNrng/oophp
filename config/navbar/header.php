@@ -72,6 +72,21 @@ return [
             "text" => "Dice 100 (Kontroller)",
             "url" => "dicegame/init",
             "title" => "Dice 100",
+        ],
+        [
+            "text" => "Movie",
+            "url" => "movie/index",
+            "title" => "Movie",
+        ],
+        [
+            "text" => "TextFilter",
+            "url" => "textfilter/index",
+            "title" => "Movie",
+        ],
+        [
+            "text" => "dbContent",
+            "url" => "dbcontent/showall",
+            "title" => "dbContent",
         ]
     ],
 ];

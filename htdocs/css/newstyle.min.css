@@ -26,3 +26,13 @@ html {
     background-image: none;
     border-top: none;
 }
+
+img.thumb {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.table {
+    border: 2px solid black;
+}
+
